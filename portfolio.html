@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Web Amélioré</title>
+    <link rel="stylesheet" href="style.css"> <!-- External CSS link inside the <head> section -->
+    <link rel="icon" href="favicon.ico"> <!-- Favicon link inside the <head> section -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        p {
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        .photo {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #4CAF50;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .video-section, .canvas-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .form-section {
+            margin-top: 40px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bienvenue sur mon site web</h1>
+</header>
+
+<div class="container">
+    <img src="images/moi.webp" alt="Photo de Julien" class="photo">
+    <h2>Bonjour, je m'appelle Julien Mineau</h2>
+    <p>Je suis un passionné d'informatique et de nouvelles technologies. J'adore découvrir de nouvelles choses et partager mes connaissances avec ceux qui m'entourent. Mon objectif est de toujours apprendre et d'évoluer dans ce domaine fascinant.</p>
+    <p>En dehors de l'informatique, j'ai un intérêt particulier pour la musique, notamment le groupe Linkin Park 🎵. Leur énergie et leurs paroles m'inspirent beaucoup dans ma vie quotidienne.</p>
+    <p>Ce site est mon espace personnel pour partager un peu de mon univers et mes projets. Merci de visiter et d'explorer ce que j'ai à offrir !</p>
+    <div class="back-link">
+        <a href="index.html">Retour à la page d'accueil</a>
+    </div>
+</div>
+
+<div class="container video-section">
+    <h2>Vidéo Inspirante</h2>
+    <video controls>
+        <source src="videos/lac.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture de vidéos.
+    </video>
+</div>
+
+<div class="container canvas-section">
+    <h2>Animation 3D</h2>
+    <canvas id="webglCanvas" width="300" height="300"></canvas>
+</div>
+
+<div class="container form-section">
+    <h2>Formulaire de Contact</h2>
+    <form action="submit_form.php" method="post">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+
+        <label for="age">Âge :</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="email">Adresse mail :</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="telephone">Numéro de téléphone :</label>
+        <input type="tel" id="telephone" name="telephone" required>
+
+        <input type="submit" value="Envoyer">
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script>
+    // Initialisation de la scène, de la caméra et du rendue
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000); // 1 pour un aspect carré
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webglCanvas') });
+    renderer.setSize(300, 300); // Taille du canevas
+
+    // Création d'un cube et d'une sphère
+    const cubeGeometry = new THREE.BoxGeometry();
+    const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0x4CAF50 });
+    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube.position.x = -1.5;
+    scene.add(cube);
+
+    const sphereGeometry = new THREE.SphereGeometry(0.8, 32, 32); // Réduction de la taille
+    const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x007BFF, wireframe: true });
+    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    sphere.position.x = 1.5;
+    scene.add(sphere);
+
+    // Positionnement de la caméra
+    camera.position.z = 5;
+
+    // Animation
+    function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        sphere.rotation.y += 0.02;
+        renderer.render(scene, camera);
+    }
+    animate();
+</script>
+
+</body>
+</html>

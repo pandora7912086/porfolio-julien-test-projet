@@ -1,0 +1,77 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Couleur de secours */
+    background-image: url('naruto-shippuuden-uzumaki-naruto-uchiha-sasuke-rinnegan-wallpaper-preview.jpg'); /* Chemin de l'image */
+    background-size: cover; /* L'image couvre tout l'écran */
+    background-position: center; /* Centrage de l'image */
+    background-repeat: no-repeat; /* Pas de répétition */
+    background-attachment: fixed; /* Effet de parallaxe */
+    color: #333; /* Couleur du texte */
+}
+
+header {
+    background-color: rgba(76, 175, 80, 0.8); /* Transparence pour une meilleure visibilité */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour détacher le header du fond */
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.9); /* Arrière-plan blanc avec transparence */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 1.1em;
+}
+
+.photo {
+    display: block;
+    margin: 20px auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4CAF50;
+    image-rendering: crisp-edges; /* Netteté */
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.video-section, .canvas-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+video {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+}
